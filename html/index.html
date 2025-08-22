@@ -1,0 +1,132 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Home</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css"> <!-- Font Awesome lokal -->
+    <style>
+        @font-face {
+            font-family: 'Poppins';
+            src: url('../fonts/poppins-300.woff2') format('woff2');
+            font-weight: 300;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Poppins';
+            src: url('../fonts/poppins-500.woff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Poppins';
+            src: url('../fonts/poppins-700.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-links">
+                <a href="index.html" class="navbar-link">Home</a>
+                <a href="academy.html" class="navbar-link">Academy</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Home) -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <!-- Chat Bubbles (Kiri) -->
+            <div class="chat-column">
+                <img src="../assets/profile.jpg" alt="Profile Photo" class="profile-photo">
+                <div class="chat-bubbles">
+                    <div class="bubble">Hello! I'm Cahyo Romadhon</div>
+                    <div class="bubble">Specializing in Move Programming Language for innovative dApps</div>
+                </div>
+            </div>
+            <!-- About Me (Kanan) -->
+            <div class="about-column">
+                <h1 class="about-judul">Gm, I'm <span class="highlight">@cahyorom</span></h1>
+                <h3 class="about-judul">Smart Contract Developer | Web3 Specialist</h3>
+                <p>I'm a smart contract developer based in Surabaya, Indonesia. Driven by a passion for creating secure, efficient, and innovative decentralized applications, I’ve also developed an educational website to share knowledge and encourage learning in smart contract development.</p>
+                <a href="academy.html" class="cta-button" id="cta-button-port">Join Academy</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <!-- <section id="skills" class="skills-section">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3><span class="highlight">Move</span> Programming</h3>
+                <p>Expert in smart contracts for Sui blockchain with Move language.</p>
+            </div>
+            <div class="skill-card">
+                <h3><span class="highlight">Sui</span> Blockchain</h3>
+                <p>Specialized in dApps development and optimization.</p>
+            </div>
+            <div class="skill-card">
+                <h3><span class="highlight">Solidity</span></h3>
+                <p>Proficient in Ethereum-based smart contracts.</p>
+            </div>
+            <div class="skill-card">
+                <h3><span class="highlight">Web3.js</span> / Ethers.js</h3>
+                <p>Integrating frontend with blockchain seamlessly.</p>
+            </div>
+            
+        </div>
+    </section> -->
+
+    <!-- Portfolio Section -->
+    <section id="projects" class="portfolio">
+        <h2>Programs Collection</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <h3>Dynamic Counter</h3>
+                <p>This smart contract powers a dynamic counter built with Move on the Sui blockchain. Showcasing state management and transaction logic, it leverages Sui's high-performance framework, ideal for developers exploring secure, scalable decentralized apps.</p>
+                <a href="https://github.com/cahyoromadhon/basic-move/tree/main/program3" class="cta-button" target="_blank">View on Github</a>
+            </div>
+            <div class="portfolio-card">
+                <h3>Dynamic Counter</h3>
+                <p>This smart contract powers a dynamic counter built with Move on the Sui blockchain. Showcasing state management and transaction logic, it leverages Sui's high-performance framework, ideal for developers exploring secure, scalable decentralized apps.</p>
+                <a href="https://github.com/cahyoromadhon/basic-move/tree/main/program3" class="cta-button" target="_blank">View on Github</a>
+            </div>
+            <div class="portfolio-card">
+                <h3>Hello World Program</h3>
+                <p>A brief "Hello World" smart contract written in Move for the Sui blockchain. This beginner-friendly project showcases Move's syntax and Sui's scalable architecture, serving as an educational starting point for developers exploring secure decentralized application.</p>
+                <a href="https://github.com/cahyoromadhon/basic-move/tree/main/program2" class="cta-button" target="_blank">View on Github</a>
+            </div>
+            <!-- Tambahkan lebih banyak card sesuai proyekmu -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <p>Let’s connect for collaborations or inquiries about my work.</p>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fab fa-twitter"></i>
+                    <a href="https://x.com/cahyorom" class="contact-link" target="_blank">cahyorom</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fab fa-telegram-plane"></i>
+                    <a href="https://t.mebrocahyo" class="contact-link" target="_blank">brocahyo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
