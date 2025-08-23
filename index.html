@@ -1,14 +1,13 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cahyorom</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css"> <!-- Font Awesome lokal -->
+    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
     <style>
+        /* Font Poppins Lokal */
         @font-face {
             font-family: 'Poppins';
             src: url('../fonts/poppins-300.woff2') format('woff2');
@@ -27,8 +26,354 @@
             font-weight: 700;
             font-style: normal;
         }
+
+        /* Reset dan Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            transition: all 0.3s ease;
+            min-height: 100vh; /* Pastikan minimal tinggi layar */
+            height: auto; /* Tinggi menyesuaikan konten */
+        }
+
+        body.light-mode {
+            background-color: rgba(230, 230, 230, 0.9);
+            color: #333333;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 20px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #1a1a1a, #121212);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        body.light-mode .navbar {
+            background: linear-gradient(135deg, #e0e0e0, #ffffff);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff4d4d;
+            text-decoration: none;
+        }
+
+        body.light-mode .navbar-brand {
+            color: #1a1a1a;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar-link {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        body.light-mode .navbar-link {
+            color: #333333;
+        }
+
+        .navbar-link:hover {
+            color: #ff4d4d;
+        }
+
+        body.light-mode .navbar-link:hover {
+            color: #1a1a1a;
+        }
+
+        /* Menu Toggle */
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            color: #e0e0e0;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        body.light-mode .menu-toggle {
+            color: #333333;
+        }
+
+        /* Mode Toggle */
+        .mode-toggle {
+            font-size: 20px;
+            color: #ff4d4d;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        body.light-mode .mode-toggle {
+            color: #1a1a1a;
+        }
+
+        .mode-toggle:hover {
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        body.light-mode .mode-toggle:hover {
+            color: #333333;
+        }
+
+        /* Search Bar */
+        .academy-search {
+            width: 100%;
+            max-width: 1400px;
+            margin: 80px auto 40px;
+            padding: 10px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            background: none;
+        }
+
+        .academy-search input {
+            width: 70%;
+            max-width: 600px;
+            padding: 12px 15px;
+            background: rgba(20, 20, 20, 0.95);
+            border: none;
+            border-radius: 20px;
+            color: #e0e0e0;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        body.light-mode .academy-search input {
+            background: rgba(200, 200, 200, 0.9);
+            color: #333333;
+        }
+
+        .academy-search input:focus {
+            outline: none;
+            box-shadow: 0 0 5px #1a1a1a;
+        }
+
+        body.light-mode .academy-search input:focus {
+            box-shadow: 0 0 5px #333333;
+        }
+
+        .academy-search input::placeholder {
+            color: #b0b0b0;
+        }
+
+        body.light-mode .academy-search input::placeholder {
+            color: #666666;
+        }
+
+        /* Academy Content */
+        .academy-content {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(15, 15, 15, 0.9);
+            border-radius: 0;
+            transition: background 0.3s ease;
+            min-height: 0; /* Hapus batasan tinggi minimum */
+            height: auto; /* Tinggi menyesuaikan konten */
+        }
+
+        body.light-mode .academy-content {
+            background: rgba(230, 230, 230, 0.9);
+        }
+
+        .academy-articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            height: auto; /* Pastikan grid menyesuaikan konten */
+        }
+
+        .article-card {
+            background: rgba(20, 20, 20, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.5s ease, box-shadow 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            height: auto; /* Hapus min-height kaku */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: stretch;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        body.light-mode .article-card {
+            background: rgba(220, 220, 220, 0.95);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-card:hover {
+            transform: translateY(-15px); /* Animasi timbul ke atas */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        body.light-mode .article-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-card-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .article-card-label {
+            font-size: 12px;
+            color: #a0a0a0;
+            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        body.light-mode .article-card-label {
+            color: #666666;
+        }
+
+        .article-card h3 {
+            font-size: 22px;
+            color: #ff4d4d;
+            margin-bottom: 10px;
+        }
+
+        body.light-mode .article-card h3 {
+            color: #1a1a1a;
+        }
+
+        .article-card p {
+            font-size: 16px;
+            color: #e0e0e0;
+            margin-bottom: 15px;
+        }
+
+        body.light-mode .article-card p {
+            color: #555555;
+        }
+
+        /* Responsivitas */
+        @media (max-width: 768px) {
+            .navbar-links {
+                display: none;
+                flex-direction: column;
+                gap: 20px;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: #1a1a1a;
+                padding: 20px;
+                text-align: center;
+            }
+
+            body.light-mode .navbar-links {
+                background: #e0e0e0;
+            }
+
+            .navbar-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .academy-search {
+                margin-top: 70px;
+            }
+
+            .academy-search input {
+                max-width: 100%;
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+
+            .article-card {
+                height: auto; /* Pastikan menyesuaikan konten */
+            }
+
+            .article-card-label {
+                font-size: 11px;
+            }
+
+            .article-card h3 {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-brand {
+                font-size: 20px;
+            }
+
+            .navbar-link {
+                font-size: 14px;
+            }
+
+            .article-card h3 {
+                font-size: 18px;
+            }
+
+            .article-card p {
+                font-size: 14px;
+            }
+
+            .academy-content {
+                padding: 10px;
+            }
+
+            .article-card {
+                height: auto; /* Pastikan menyesuaikan konten */
+            }
+
+            .article-card-label {
+                font-size: 10px;
+            }
         }
     </style>
 </head>
@@ -36,118 +381,149 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-container">
+            <a href="index" class="navbar-brand">cahyorom.site</a>
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
             <div class="navbar-links">
-                <a href="index" class="navbar-link">Home</a>
-                <a href="a" class="navbar-link">Academy</a>
+                <a href="home" class="navbar-link">Home</a>
+                <a href="index" class="navbar-link active">Academy</a>
             </div>
+            <button class="mode-toggle" id="mode-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
         </div>
     </nav>
 
-    <!-- Hero Section (Home) -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <!-- Chat Bubbles (Kiri) -->
-            <div class="chat-column">
-                <img src="assets/profile.jpg" alt="Profile Photo" class="profile-photo">
-                <div class="chat-bubbles">
-                    <div class="bubble">Hello! I'm Cahyo Romadhon</div>
-                    <div class="bubble">Specializing in Move Programming Language for innovative dApps</div>
-                </div>
-            </div>
-            <!-- About Me (Kanan) -->
-            <div class="about-column">
-                <h1 class="about-judul">Gm, I'm <span class="highlight">@cahyorom</span></h1>
-                <h3 class="about-judul">Smart Contract Developer | Web3 Specialist</h3>
-                <p>I'm a smart contract developer based in Surabaya, Indonesia. Driven by a passion for creating secure, efficient, and innovative decentralized applications, I’ve also developed an educational website to share knowledge and encourage learning in smart contract development.</p>
-                <a href="a" class="cta-button" id="cta-button-port">Join Academy</a>
-            </div>
+    <!-- Academy Content -->
+    <section class="academy-content">
+        <!-- Search Bar -->
+        <div class="academy-search">
+            <input type="text" placeholder="Search articles..." id="article-search">
+        </div>
+
+        <!-- Articles -->
+        <div class="academy-articles" id="academy-articles">
+            <!-- Kartu akan dihasilkan dinamis oleh JavaScript -->
         </div>
     </section>
 
-    <!-- Technical Skills Section -->
-    <!-- <section id="skills" class="skills-section">
-        <h2>Technical Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <h3><span class="highlight">Move</span> Programming</h3>
-                <p>Expert in smart contracts for Sui blockchain with Move language.</p>
-            </div>
-            <div class="skill-card">
-                <h3><span class="highlight">Sui</span> Blockchain</h3>
-                <p>Specialized in dApps development and optimization.</p>
-            </div>
-            <div class="skill-card">
-                <h3><span class="highlight">Solidity</span></h3>
-                <p>Proficient in Ethereum-based smart contracts.</p>
-            </div>
-            <div class="skill-card">
-                <h3><span class="highlight">Web3.js</span> / Ethers.js</h3>
-                <p>Integrating frontend with blockchain seamlessly.</p>
-            </div>
-            
-        </div>
-    </section> -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Menu Toggle for Mobile
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navbarLinks = document.querySelector('.navbar-links');
 
-    <!-- Portfolio Section -->
-    <section id="projects" class="portfolio">
-        <h2>Programs Collection</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-card">
-                <h3>NFT Storage</h3>
-                <p>This smart contract enables NFT storage using the Walrus protocol in Move on the Sui blockchain. It demonstrates secure, decentralized storage of NFT assets, ensuring data integrity, guiding developers in building scalable, innovative decentralized applications.</p>
-                <a href="https://github.com/cahyoromadhon/basic-move/tree/main/walrus1" class="cta-button" target="_blank">View on Github</a>
-            </div>
-            <div class="portfolio-card">
-                <h3>Token Creation</h3>
-                <p>This smart contract enables token creation using Move’s Event concept on the Sui blockchain. It demonstrates secure token issuance and event tracking, empowering developers to build efficient, innovative decentralized applications.</p>
-                <a href="https://github.com/cahyoromadhon/basic-move/tree/main/program9" class="cta-button" target="_blank">View on Github</a>
-            </div>
-            <div class="portfolio-card">
-                <h3>Ticket Management</h3>
-                <p>This smart contract implements a ticket management system using Move’s capability design on the Sui blockchain. It demonstrates secure access control and data handling, guiding developers to build effective, secure decentralized applications.</p>
-                <a href="https://github.com/cahyoromadhon/basic-move/tree/main/program8" class="cta-button" target="_blank">View on Github</a>
-            </div>
-            <div class="portfolio-card">
-                <h3>Gift Box</h3>
-                <p>This smart contract creates a GiftBox using objectWrapping in Move on the Sui blockchain. It shows how to securely create and manage objects, inspiring developers to explore building simple, effective, and innovative decentralized apps.</p>
-                <a href="https://github.com/cahyoromadhon/basic-move/tree/main/program7" class="cta-button" target="_blank">View on Github</a>
-            </div>
-            <div class="portfolio-card">
-                <h3>Item Manager</h3>
-                <p>This smart contract implements an item manager with create_item and delete_item functions using Move on the Sui blockchain. It showcases data management and transaction handling, ideal for developers learning to build secure, efficient decentralized apps.</p>
-                <a href="https://github.com/cahyoromadhon/basic-move/tree/main/program6" class="cta-button" target="_blank">View on Github</a>
-            </div>
-            <div class="portfolio-card">
-                <h3>Dynamic Counter</h3>
-                <p>This smart contract powers a dynamic counter built with Move on the Sui blockchain. Showcasing state management and transaction logic, it leverages Sui's high-performance framework, ideal for developers exploring secure, scalable decentralized apps.</p>
-                <a href="https://github.com/cahyoromadhon/basic-move/tree/main/program3" class="cta-button" target="_blank">View on Github</a>
-            </div>
-            <div class="portfolio-card">
-                <h3>Hello World Program</h3>
-                <p>A brief "Hello World" smart contract written in Move for the Sui blockchain. This beginner-friendly project showcases Move's syntax and Sui's scalable architecture, serving as an educational starting point for developers exploring secure decentralized application.</p>
-                <a href="https://github.com/cahyoromadhon/basic-move/tree/main/program2" class="cta-button" target="_blank">View on Github</a>
-            </div>
-            <!-- Tambahkan lebih banyak card sesuai proyekmu -->
-        </div>
-    </section>
+            menuToggle.addEventListener('click', () => {
+                navbarLinks.classList.toggle('active');
+            });
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <p>Let’s connect for collaborations or inquiries about my work.</p>
-        <div class="contact-container">
-            <div class="contact-info">
-                <div class="contact-card">
-                    <i class="fab fa-twitter"></i>
-                    <a href="https://x.com/cahyorom" class="contact-link" target="_blank">cahyorom</a>
-                </div>
-                <div class="contact-card">
-                    <i class="fab fa-telegram-plane"></i>
-                    <a href="https://t.mebrocahyo" class="contact-link" target="_blank">brocahyo</a>
-                </div>
-            </div>
-        </div>
-    </section>
+            // Mode Toggle Functionality
+            const modeToggle = document.getElementById('mode-toggle');
+            const body = document.body;
 
-    <script src="script.js"></script>
+            const savedMode = localStorage.getItem('theme');
+            if (savedMode === 'light') {
+                body.classList.add('light-mode');
+                modeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+
+            modeToggle.addEventListener('click', () => {
+                body.classList.toggle('light-mode');
+                const isLightMode = body.classList.contains('light-mode');
+                modeToggle.innerHTML = isLightMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
+            });
+
+            // Search Functionality
+            const searchInput = document.getElementById('article-search');
+            const academyArticles = document.getElementById('academy-articles');
+
+            // Daftar unit (sesuaikan dengan file yang ada di units/)
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            const units = [
+                { id: 'unit-1', title: 'Unit One: Getting Started', description: 'Learn the basics of Move programming, including setup, project structure, types, functions, and deployment on the Sui blockchain.', file: 'academy/unit-1' },
+                { id: 'unit-2', title: 'Unit Two: Coming Soon', description: 'Just wait dude', file: 'academy/unit-2' },
+                { id: 'unit-3', title: 'Unit Three: Coming Soon', description: 'Just wait dude', file: 'academy/unit-3' }
+            ];
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            // Fungsi untuk menghasilkan kartu dinamis
+            function generateArticles() {
+                const isLightMode = body.classList.contains('light-mode');
+                academyArticles.innerHTML = ''; // Bersihkan konten sebelum menghasilkan ulang
+
+                units.forEach(unit => {
+                    const articleHtml = `
+                        <a href="${unit.file}" class="article-card ${isLightMode ? 'light-mode' : ''}">
+                            <div class="article-card-content">
+                                <span class="article-card-label ${isLightMode ? 'light-mode' : ''}">Sui Blockchain</span>
+                                <h3 ${isLightMode ? 'class="light-mode"' : ''}>${unit.title}</h3>
+                                <p ${isLightMode ? 'class="light-mode"' : ''}>${unit.description}</p>
+                            </div>
+                        </a>
+                    `;
+                    academyArticles.insertAdjacentHTML('beforeend', articleHtml);
+                });
+
+                // Perbarui search setelah kartu dihasilkan
+                updateSearch();
+                setupObserver();
+            }
+
+            // Search Functionality
+            function updateSearch() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const articleCards = document.querySelectorAll('.article-card');
+                let hasVisibleCards = false;
+
+                articleCards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    const isMatch = title.includes(searchTerm) || description.includes(searchTerm);
+                    card.style.display = isMatch ? 'flex' : 'none';
+                    if (isMatch) hasVisibleCards = true;
+
+                    card.style.height = isMatch ? 'auto' : '0';
+                    card.style.opacity = isMatch ? '1' : '0';
+                });
+
+                academyArticles.style.display = hasVisibleCards ? 'grid' : 'none';
+                if (hasVisibleCards) {
+                    academyArticles.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
+                }
+            }
+
+            searchInput.addEventListener('input', updateSearch);
+
+            // Scroll Animation
+            function setupObserver() {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.1
+                };
+
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = 1;
+                            entry.target.style.transform = 'translateY(0)';
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                document.querySelectorAll('.article-card').forEach(card => {
+                    card.style.opacity = 0;
+                    card.style.transform = 'translateY(30px)';
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    observer.observe(card);
+                });
+            }
+
+            // Generate articles saat halaman dimuat
+            generateArticles();
+        });
+    </script>
 </body>
 </html>
