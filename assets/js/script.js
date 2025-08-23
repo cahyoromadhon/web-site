@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Logika untuk tombol Exit
     if (exitButton) {
         exitButton.addEventListener('click', () => {
-            window.location.href = '../a';
+            window.location.href = '../index';
         });
     }
 });
