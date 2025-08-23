@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Tentukan urutan unit (sesuaikan dengan jumlah unit Anda)
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    const units = ['unit-one.html', 'unit-two.html', 'unit-three.html'];
+    const units = ['../../academy/unit-1', '../../academy/unit-2', '../../academy/unit-3'];
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     const currentPage = window.location.pathname.split('/').pop();
